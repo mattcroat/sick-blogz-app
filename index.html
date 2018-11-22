@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="css/skeleton.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<title>Sick Blogz</title>
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<h1 class="header__title">Sick Blogz</h1>
+				<span class="header__logo">🔥</span>
+			</header>
+
+			<div class="root">
+				<!-- Data will go here -->
+			</div>
+		</div>
+
+		<!-- Axios for data fetching -->
+		<script src="./node_modules/axios/dist/axios.js"></script>
+
+		<!-- Moment for formatting date -->
+		<script src="./node_modules/moment/min/moment.min.js"></script>
+
+		<!-- Fetching some placeholder data -->
+		<script>
+			// Grab element
+			const root = document.querySelector('.root')
+
+			async function fetchData() {
+				// Fetch data to be formatted
+				const response = await axios.get(
+					'https://jsonplaceholder.typicode.com/posts'
+				)
+				// Format before you output the data
+				root.innerHTML = formattedHTMLOutput(response)
+			}
+
+			function formattedHTMLOutput(response) {
+				let posts = ''
+
+				// Grab 10 posts
+				for (let i = 0; i < 10; i++) {
+					// Our posts
+					posts += `
+							<h3 class="post__title">${response.data[i].title}</h3>
+							<span class="post__date">Posted on ${formatTime(Date.now())}</span>
+							<p class="post__content">${response.data[i].body}</p>
+						`
+				}
+				return posts
+			}
+
+			function formatTime(time) {
+				// Returns a formatted date
+				return moment(time).format('MMMM Do YYYY, H:mm')
+			}
+
+			// Run everything
+			fetchData()
+		</script>
+	</body>
+</html>

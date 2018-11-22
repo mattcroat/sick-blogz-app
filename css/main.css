@@ -1,0 +1,39 @@
+html {
+	border-top: 5px solid #f7630c;
+}
+
+body {
+	background: url(../images/wrinkled-paper-pattern.jpg);
+}
+
+.container {
+	max-width: 620px;
+}
+
+.header {
+	display: flex;
+	margin-top: 3rem;
+}
+
+.header__title {
+	font-weight: 900;
+	margin-bottom: 4rem;
+}
+
+.header__logo {
+	font-size: 4rem;
+	margin-left: 0.5rem;
+}
+
+.post__title {
+	margin-bottom: 0.5rem;
+}
+
+.post__content {
+	margin-top: 1rem;
+}
+
+.post__date {
+	color: #b56e5f;
+	border-bottom: 1px solid #dddbdb;
+}
